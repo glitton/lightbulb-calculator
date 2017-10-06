@@ -12,29 +12,29 @@
         <section class="inc">
           <div>
             <h4>Incandescent</h4>
-            <p>100.0</p>
-            <p>13.14 </p>
+            <p>{{inc_wattage}}</p>
+            <p>{{inc_cost}}</p>
           </div>
         </section>
         <section class="hal">
           <div>
             <h4>Halogen</h4>
-            <p>72.0</p>
-            <p>9.46</p>
+            <p>{{hal_wattage}}</p>
+            <p>{{hal_cost}}</p>
           </div>
         </section>
         <section class="cfl">
           <div>
             <h4>CFL</h4>
-            <p>23.4</p>
-            <p>3.07</p>
+            <p>{{cfl_wattage}}</p>
+            <p>{{cfl_cost}}</p>
           </div>
         </section>
         <section class="led">
           <div>
             <h4>LED</h4>
-            <p>20.0</p>
-            <p>2.63</p>
+            <p>{{led_wattage}}</p>
+            <p>{{led_cost}}</p>
           </div>
         </section> 
       </main>
@@ -44,18 +44,18 @@
           <p>Brightness of bulb</p>
           <!-- ng-model shows the value of current lumens on page load -->
           <!-- ng-options creates an option element by looping through an array, TO DO: check out loop syntax -->
-          <select ng-model="current_lumens" ng-options="l as l for l in lumen_options"> 
+          <select ng-change="calculate()" ng-model="current_lumens" ng-options="l as l for l in lumen_options"> 
           </select>
         </div>
         <div>
           <h4>kWh</h4>
           <p>Kilowatt-hour cost</p>
-          <input type="number" ng-model="current_cost" ng-value="{{current_cost}}">cents
+          <input type="number" ng-change="calculate()" ng-model="current_cost" value="{{current_cost}}">cents
         </div>
         <div>
           <h4>Hours</h4>
           <p>Usage per day</p>
-          <input type="number" ng-model="current_hours" ng-value="{{current_hours}}">cents
+          <input type="number" ng-change="calculate()" ng-model="current_hours" value="{{current_hours}}">hours
         </div>                
       </form>
     </div>
