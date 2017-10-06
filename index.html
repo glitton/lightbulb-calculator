@@ -4,65 +4,77 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Lighbult Efficiency Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- My CSS -->
     <link rel="stylesheet" type="text/css" href="css/calculator.css">
 	</head>
 	<body>
-    <div id="myCalculator" ng-controller="calcController">
-      <main>
-        <section class="inc">
+  <nav class="navbar navbar-default">
+    <h2 class="title">Welcome to The Lightbulb Efficiency Calculator</h2>
+  </nav>  
+    <div class="container main-calc">
+      <div class="row col-lg-12" id="myCalculator" ng-controller="calcController">
+        <main>
+          <section class="inc">
+            <div>
+              <h4>Incandescent</h4>
+              <p>{{inc_wattage}}</p>
+              <p>{{inc_cost}}</p>
+            </div>
+          </section>
+          <section class="hal">
+            <div>
+              <h4>Halogen</h4>
+              <p>{{hal_wattage}}</p>
+              <p>{{hal_cost}}</p>
+            </div>
+          </section>
+          <section class="cfl">
+            <div>
+              <h4>CFL</h4>
+              <p>{{cfl_wattage}}</p>
+              <p>{{cfl_cost}}</p>
+            </div>
+          </section>
+          <section class="led">
+            <div>
+              <h4>LED</h4>
+              <p>{{led_wattage}}</p>
+              <p>{{led_cost}}</p>
+            </div>
+          </section> 
+        </main>
+        <form>
           <div>
-            <h4>Incandescent</h4>
-            <p>{{inc_wattage}}</p>
-            <p>{{inc_cost}}</p>
+            <h4>Lumens</h4>
+            <p>Brightness of bulb</p>
+            <!-- ng-model shows the value of current lumens on page load -->
+            <!-- ng-options creates an option element by looping through an array -->
+            <select ng-change="calculate()" ng-model="current_lumens" ng-options="l as l for l in lumen_options"> 
+            </select>
           </div>
-        </section>
-        <section class="hal">
           <div>
-            <h4>Halogen</h4>
-            <p>{{hal_wattage}}</p>
-            <p>{{hal_cost}}</p>
+            <h4>kWh</h4>
+            <p>Kilowatt-hour cost</p>
+            <input type="number" ng-change="calculate()" ng-model="current_cost" value="{{current_cost}}"> cents
           </div>
-        </section>
-        <section class="cfl">
           <div>
-            <h4>CFL</h4>
-            <p>{{cfl_wattage}}</p>
-            <p>{{cfl_cost}}</p>
-          </div>
-        </section>
-        <section class="led">
-          <div>
-            <h4>LED</h4>
-            <p>{{led_wattage}}</p>
-            <p>{{led_cost}}</p>
-          </div>
-        </section> 
-      </main>
-      <form>
-        <div>
-          <h4>Lumens</h4>
-          <p>Brightness of bulb</p>
-          <!-- ng-model shows the value of current lumens on page load -->
-          <!-- ng-options creates an option element by looping through an array, TO DO: check out loop syntax -->
-          <select ng-change="calculate()" ng-model="current_lumens" ng-options="l as l for l in lumen_options"> 
-          </select>
-        </div>
-        <div>
-          <h4>kWh</h4>
-          <p>Kilowatt-hour cost</p>
-          <input type="number" ng-change="calculate()" ng-model="current_cost" value="{{current_cost}}">cents
-        </div>
-        <div>
-          <h4>Hours</h4>
-          <p>Usage per day</p>
-          <input type="number" ng-change="calculate()" ng-model="current_hours" value="{{current_hours}}">hours
-        </div>                
-      </form>
-    </div>
+            <h4>Hours</h4>
+            <p>Usage per day</p>
+            <input type="number" ng-change="calculate()" ng-model="current_hours" value="{{current_hours}}"> hours
+          </div>                
+        </form>
+      </div>
+    </div>  
 
 
 <!-- SCRIPT TAGS     -->
-  <!-- AngularJS script -->
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Latest compiled and minified Bootstrap JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- AngularJS script v1.2.32 -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
   <script src="js/calculator.js"></script>
 	</body>
