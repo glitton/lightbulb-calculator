@@ -42,27 +42,28 @@
         <div>
           <h4>Lumens</h4>
           <p>Brightness of bulb</p>
-          <select>
-            <option value="600">600</option>
-            <option value="900">900</option>
+          <!-- ng-model shows the value of current lumens on page load -->
+          <!-- ng-options creates an option element by looping through an array, TO DO: check out loop syntax -->
+          <select ng-model="current_lumens" ng-options="l as l for l in lumen_options"> 
           </select>
         </div>
         <div>
           <h4>kWh</h4>
           <p>Kilowatt-hour cost</p>
-          <input type="number" value="12">cents
+          <input type="number" ng-model="current_cost" ng-value="{{current_cost}}">cents
         </div>
         <div>
           <h4>Hours</h4>
           <p>Usage per day</p>
-          <input type="number" value="3">cents
+          <input type="number" ng-model="current_hours" ng-value="{{current_hours}}">cents
         </div>                
       </form>
     </div>
 
 
 <!-- SCRIPT TAGS     -->
-  <script src="js/angular.min.js"></script>  
+  <!-- AngularJS script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
   <script src="js/calculator.js"></script>
 	</body>
 </html>
